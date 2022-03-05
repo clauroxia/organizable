@@ -1,6 +1,7 @@
 import DOMHandler from "../dom-handler.js";
 import HomePage from "./home-page.js";
 import CloseBoardsPage from "./closeboards-page.js";
+import { input } from "../components/inputs.js";
 
 function render() {
   return `<body>
@@ -37,78 +38,35 @@ function render() {
         <div class="section-sm">
           <h2 class="heading--md mb-8">My Profile</h2>
           <form action="" class="full-width container-sm flex flex-column gap-4">
-            <div class="input">
-              <label for="input-1" class="content-xs overline">Username</label>
-              <div class="input__container">
-                <img
-                  src="/icons/username.svg"
-                  alt="user-icon"
-                  class="input__icon"
-                />
-                <input
-                  type="text"
-                  placeholder="username"
-                  class="input__content"
-                  id="input-1"
-                  name="input-1"
-                  required
-                />
-              </div>
-            </div>
-            <div class="input">
-              <label for="input-1" class="content-xs overline">Email</label>
-              <div class="input__container">
-                <img
-                  src="/icons/email.svg"
-                  alt="user-icon"
-                  class="input__icon"
-                />
-                <input
-                  type="text"
-                  placeholder="email"
-                  class="input__content"
-                  id="input-1"
-                  name="input-1"
-                  required
-                />
-              </div>
-            </div>
-            <div class="input">
-              <label for="input-1" class="content-xs overline">First Name</label>
-              <div class="input__container">
-                <img
-                  src="/icons/name.svg"
-                  alt="user-icon"
-                  class="input__icon"
-                />
-                <input
-                  type="text"
-                  placeholder="first name"
-                  class="input__content"
-                  id="input-1"
-                  name="input-1"
-                  required
-                />
-              </div>
-            </div>
-            <div class="input">
-              <label for="input-1" class="content-xs overline">Last Name</label>
-              <div class="input__container">
-                <img
-                  src="/icons/name.svg"
-                  alt="user-icon"
-                  class="input__icon"
-                />
-                <input
-                  type="text"
-                  placeholder="last name"
-                  class="input__content"
-                  id="input-1"
-                  name="input-1"
-                  required
-                />
-              </div>
-            </div>
+          ${input({
+            label: "Username",
+            id: "username",
+            placeholder: "username",
+            icon: "/icons/username.svg",
+            required: true,
+          })}
+          ${input({
+            label: "Email",
+            id: "email",
+            placeholder: "email",
+            icon: "/icons/email.svg",
+            required: true,
+          })}
+          ${input({
+            label: "First Name",
+            id: "first_name",
+            placeholder: "first name",
+            icon: "/icons/name.svg",
+            required: true,
+          })}
+          ${input({
+            label: "Last Name",
+            id: "last_name",
+            placeholder: "last name",
+            icon: "/icons/name.svg",
+            required: true,
+          })}
+           
             <button type="submit" class="button button--primary width-full">
               Update Profile
             </button>

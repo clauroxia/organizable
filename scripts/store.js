@@ -1,8 +1,9 @@
 const STORE = {
   user: null,
+  currentUser: null,
   boards: [],
   lists: [],
-  cards: []
+  cards: [],
 }
 
 export default STORE;

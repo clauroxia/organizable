@@ -1,8 +1,10 @@
 import DOMHandler from "../dom-handler.js";
 import HomePage from "./home-page.js";
 import ProfilePage from "./profile-page.js";
+import STORE from "../store.js";
 
 function render() {
+  const boards = STORE.boards;
   return `<body class="bg-gray-100">
   <section class="container-xl flex">
     <div class="container-xl__sidebar flex flex-column justify-between bg-white">
@@ -36,6 +38,7 @@ function render() {
       <div class="section section__close-boards"> 
         <div class="section-sm">
           <h2 class="heading--md">Closed Boards</h2>
+          ${closeboards(boards)}
         </div>
       </div>
     </div>
@@ -44,6 +47,13 @@ function render() {
 `
 }
 
+function closeboards(boards) {
+  let index = "";
+  for(let board of boards){
+    if (board.closed) index += `<p>${board.name}</p>`;
+  }
+  return index;
+}
 
 function listenHome() {
   const link = document.querySelector(".js-home-link");

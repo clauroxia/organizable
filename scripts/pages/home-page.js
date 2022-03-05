@@ -3,8 +3,10 @@ import LoginPage from "./login-page.js";
 import { logout } from "../services/session-service.js";
 import CloseBoardsPage from "./closeboards-page.js";
 import ProfilePage from "./profile-page.js";
+import STORE from "../store.js";
 
 function render() {
+  const boards = STORE.boards;
   return `<body>
   <section class="container-xl flex">
     <div class="container-xl__sidebar flex flex-column justify-between bg-white">
@@ -40,10 +42,11 @@ function render() {
           <h1 class="heading--md">My Boards</h1>
           <div class="boards-starred">
             <h2 class="heading--md heading--sm">Starred boards</h2>
-
+            ${indexStarredBoards(boards)}
           </div>
           <div class="boards-nonstarred">
             <h2 class="heading--md heading--sm">Boards</h2>
+            ${indexBoards(boards)}
           </div>
         </div>
       </div>
@@ -51,6 +54,22 @@ function render() {
   </section>
 </body>
 `
+}
+
+function indexStarredBoards(boards) {
+  let index = "";
+  for(let board of boards){
+    if (board.starred) index += `<p>${board.name}</p>`;
+  }
+  return index;
+}
+
+function indexBoards(boards) {
+  let index = "";
+  for(let board of boards){
+    if (!board.starred && !board.closed) index += `<p>${board.name}</p>`;
+  }
+  return index;
 }
 
 function listenCloseBoards() {

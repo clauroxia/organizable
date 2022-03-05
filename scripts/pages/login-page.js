@@ -4,6 +4,7 @@ import STORE from "../store.js";
 import HomePage from "./home-page.js";
 import DOMHandler from "../dom-handler.js";
 import SignUpPage from "./signup-page.js";
+import { getBoards } from "../services/boards-service.js";
 
 function render() {
   const { loginError } = LoginPage.state;
@@ -54,6 +55,10 @@ function listenSubmitForm() {
 
       const user = await login(credentials);
       STORE.user = user;
+      const boards = await getBoards();
+      STORE.boards = boards;
+      // console.log(STORE.user);
+      // console.log(STORE.boards);
       DOMHandler.load(HomePage);
     } catch(error) {
       LoginPage.state.loginError = error.message;
