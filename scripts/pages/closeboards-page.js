@@ -1,11 +1,9 @@
 import DOMHandler from "../dom-handler.js";
-import LoginPage from "./login-page.js";
-import { logout } from "../services/session-service.js";
-import CloseBoardsPage from "./closeboards-page.js";
+import HomePage from "./home-page.js";
 import ProfilePage from "./profile-page.js";
 
 function render() {
-  return `<body>
+  return `<body class="bg-gray-100">
   <section class="container-xl flex">
     <div class="container-xl__sidebar flex flex-column justify-between bg-white">
       <div class="container-xl__top">
@@ -13,11 +11,11 @@ function render() {
           <img src="/icons/organizable.svg" class="organizable-size">
         </div>
         <ul class="navbar flex flex-column gap-2">
-          <li class="navbar__element navbar__element-active flex items-center justify-content gap-1">
+          <li class="navbar__element flex items-center justify-content gap-1 js-home-link">
             <img src="/icons/board.svg" class="board-size">
             <p class="content-md"><a href="#">My Boards</a></p>
           </li>
-          <li class="navbar__element flex items-center justify-content gap-1 js-closeboards-link">
+          <li class="navbar__element flex items-center justify-content gap-1">
             <img src="/icons/closeboard.svg" class="closeboard-size">
             <p class="content-md"><a href="#">Close Boards</a></p>
           </li>
@@ -30,21 +28,14 @@ function render() {
       <div class="container-xl__bottom flex items-center">
         <div class="container-xl__bottom-logout flex justify-center items-center gap-1">
           <img src="/icons/logout.svg" class="logout-size">
-          <p class="content-sm"><a class="primary-400 js-logout-link" href="#">Log out</a></p>
+          <p class="content-sm primary-400"><a href="#">Log out</a></p>
         </div>
       </div>
     </div>
     <div class="container-xl__boards">
-      <div class="section"> 
+      <div class="section section__close-boards"> 
         <div class="section-sm">
-          <h1 class="heading--md">My Boards</h1>
-          <div class="boards-starred">
-            <h2 class="heading--md heading--sm">Starred boards</h2>
-
-          </div>
-          <div class="boards-nonstarred">
-            <h2 class="heading--md heading--sm">Boards</h2>
-          </div>
+          <h2 class="heading--md">Closed Boards</h2>
         </div>
       </div>
     </div>
@@ -53,11 +44,12 @@ function render() {
 `
 }
 
-function listenCloseBoards() {
-  const link = document.querySelector(".js-closeboards-link");
+
+function listenHome() {
+  const link = document.querySelector(".js-home-link");
   link.addEventListener("click", async (event) => {
     event.preventDefault();
-    DOMHandler.load(CloseBoardsPage);
+    DOMHandler.load(HomePage);
   });
 }
 
@@ -69,30 +61,15 @@ function listenProfile() {
   });
 }
 
-function listenLogout() {
-  const link = document.querySelector(".js-logout-link");
-  link.addEventListener("click", async (event) => {
-    event.preventDefault();
-    try {
-      await logout();
-      DOMHandler.load(LoginPage);
-    } catch (error) {
-      console.log(error);
-    }
-  });
-}
-
-
-const HomePage = {
+const CloseBoardsPage = {
   toString() {
     return render();
   },
 
   addListeners() {
-    listenLogout(),
-    listenCloseBoards(),
+    listenHome(),
     listenProfile();
   },
 };
 
-export default HomePage;
+export default CloseBoardsPage;

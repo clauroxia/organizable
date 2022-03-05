@@ -7,7 +7,7 @@ import SignUpPage from "./signup-page.js";
 
 function render() {
   const { loginError } = LoginPage.state;
-  return `<body class="bg-gray-100">
+  return `<body>
   <section class="section-lg">
     <div class="container flex flex-column gap-8 items-center">
       <img src="/icons/organizable.svg" alt="rankable logo" />
@@ -35,7 +35,7 @@ function render() {
           Login
         </button>
       </form>
-      <a href="#" class="js-signup-link">Create Account</a>
+      <a href="#" class="primary-400 js-signup-link">Create Account</a>
     </div>
   </section>
 </body>`
@@ -86,8 +86,9 @@ const LoginPage = {
   },
 
   state: {
-    loginError: null,
+    errors: {},
   },
+  
 };
 
 export default LoginPage;

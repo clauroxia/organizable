@@ -58,6 +58,11 @@ body {
   line-height: 1.75rem;
 }
 
+.content-md {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .content-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -76,7 +81,7 @@ body {
 }
 
 a {
-  color: var(--primary-500);
+  color: var(--gray-300);
   text-decoration: none;
   cursor: pointer;
 }

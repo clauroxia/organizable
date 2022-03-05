@@ -1,0 +1,22 @@
+.navbar {
+  padding-left: 0px;
+  margin: 0px;
+}
+
+.navbar__element {
+  width: 240px;
+  height: 40px;
+  padding: 0px 0px 0px 19px;
+  
+}
+
+.navbar__element-active {
+  background-color: var(--primary-100);
+  border-left: 4px solid #d44a78;
+  
+}
+
+li:active {
+  background-color: var(--primary-100);
+  border-left: 4px solid #d44a78;
+}

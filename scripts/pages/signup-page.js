@@ -7,7 +7,7 @@ import { createUser } from "../services/users-service.js";
 import { getBoards } from "../services/boards-service.js";
 
 function render() {
-  return `<body class="bg-gray-100">
+  return `<body>
   <section class="section-lg">
     <div class="container flex flex-column gap-8 items-center">
       <img src="/icons/organizable.svg" alt="rankable logo" />
@@ -54,7 +54,7 @@ function render() {
           Create Account
         </button>
       </form>
-      <a href="#" class="js-login-link">Login</a>
+      <a href="#" class="primary-400 js-login-link">Login</a>
     </div>
   </section>
 </body>

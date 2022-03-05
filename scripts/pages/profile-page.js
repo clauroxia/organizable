@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body class="bg-gray-100">
+import DOMHandler from "../dom-handler.js";
+import HomePage from "./home-page.js";
+import CloseBoardsPage from "./closeboards-page.js";
+
+function render() {
+  return `<body>
   <section class="container-xl flex">
     <div class="container-xl__sidebar flex flex-column justify-between bg-white">
       <div class="container-xl__top">
@@ -15,15 +11,15 @@
           <img src="/icons/organizable.svg" class="organizable-size">
         </div>
         <ul class="navbar flex flex-column gap-2">
-          <li class="navbar__element flex items-center justify-content gap-1">
+          <li class="navbar__element flex items-center justify-content gap-1 js-home-link">
             <img src="/icons/board.svg" class="board-size">
             <p class="content-md"><a href="#">My Boards</a></p>
           </li>
-          <li class="navbar__element flex items-center justify-content gap-1">
+          <li class="navbar__element flex items-center justify-content gap-1 js-closeboards-link">
             <img src="/icons/closeboard.svg" class="closeboard-size">
             <p class="content-md"><a href="#">Close Boards</a></p>
           </li>
-          <li class="navbar__element flex items-center justify-content gap-1">
+          <li class="navbar__element navbar__element-active flex items-center justify-content gap-1">
             <img src="/icons/username.svg" class="username-size">
             <p class="content-md"><a href="#">My Profile</a></p>
           </li>
@@ -125,4 +121,36 @@
     </div>
   </section>
 </body>
-</html>
+  `
+}
+
+function listenHome() {
+  const link = document.querySelector(".js-home-link");
+  link.addEventListener("click", async (event) => {
+    event.preventDefault();
+    DOMHandler.load(HomePage);
+  });
+}
+
+function listenCloseBoards() {
+  const link = document.querySelector(".js-closeboards-link");
+  link.addEventListener("click", async (event) => {
+    event.preventDefault();
+    DOMHandler.load(CloseBoardsPage);
+  });
+}
+
+
+
+const ProfilePage = {
+  toString() {
+    return render();
+  },
+
+  addListeners() {
+    listenHome(),
+    listenCloseBoards();
+  },
+};
+
+export default ProfilePage;

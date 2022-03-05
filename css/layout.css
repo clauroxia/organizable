@@ -1,5 +1,15 @@
+/* usando */
 .section {
-  padding: 64px 16px;
+  padding: 48px 0px;
+  height: 644px;
+}
+
+.section__close-boards {
+  height: 260px;
+}
+
+.section__close-profile {
+  height: 556px;
 }
 
 .section-lg {
@@ -7,7 +17,7 @@
 }
 
 .section-sm {
-  padding: 32px;
+  padding: 0px 32px;
 }
 
 .container {
@@ -28,4 +38,55 @@
 .container-xl {
   max-width: 1280px;
   margin: auto;
+}
+
+.container-xl__sidebar {
+  width: 240px;
+  height: 720px;
+}
+
+.container-xl__boards {
+  width: 1040px;
+  height: 720px;
+}
+
+.container-xl__top {
+  width: 240px;
+  height: 184px;
+}
+
+.container-xl__top-logo {
+  width: 240px;
+  height: 48px;
+  padding: 0px 0px 0px 16px;
+}
+
+.container-xl__bottom {
+  width: 240px;
+  height: 66px;
+  border-top: 2px solid #e76a94;
+}
+
+.container-xl__bottom-logout {
+  width: 83px;
+  height: 24px;
+  margin-left: 16px;
+}
+
+.boards-starred {
+  height: 160px;
+  margin: 32px 0px;
+}
+
+.boards-nonstarred {
+  height: 288px;
+}
+
+li {
+  list-style: none;
+}
+
+.line {
+  width: 240px;
+  height: 2px;
 }

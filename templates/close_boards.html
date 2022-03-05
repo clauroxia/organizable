@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="bg-gray-100">
+  <section class="container-xl flex">
+    <div class="container-xl__sidebar flex flex-column justify-between bg-white">
+      <div class="container-xl__top">
+        <div class="container-xl__top-logo flex flex-column justify-center">
+          <img src="/icons/organizable.svg" class="organizable-size">
+        </div>
+        <ul class="navbar flex flex-column gap-2">
+          <li class="navbar__element flex items-center justify-content gap-1">
+            <img src="/icons/board.svg" class="board-size">
+            <p class="content-md"><a href="#">My Boards</a></p>
+          </li>
+          <li class="navbar__element flex items-center justify-content gap-1">
+            <img src="/icons/closeboard.svg" class="closeboard-size">
+            <p class="content-md"><a href="#">Close Boards</a></p>
+          </li>
+          <li class="navbar__element flex items-center justify-content gap-1">
+            <img src="/icons/username.svg" class="username-size">
+            <p class="content-md"><a href="#">My Profile</a></p>
+          </li>
+        </ul>
+      </div>
+      <div class="container-xl__bottom flex items-center">
+        <div class="container-xl__bottom-logout flex justify-center items-center gap-1">
+          <img src="/icons/logout.svg" class="logout-size">
+          <p class="content-sm primary-400"><a href="#">Log out</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="container-xl__boards">
+      <div class="section section__close-boards"> 
+        <div class="section-sm">
+          <h2 class="heading--md">Closed Boards</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
