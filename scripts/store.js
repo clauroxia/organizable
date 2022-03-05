@@ -1,6 +1,8 @@
 const STORE = {
   user: null,
-  boards: []
+  boards: [],
+  lists: [],
+  cards: []
 }
 
 export default STORE;
