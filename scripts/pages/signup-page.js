@@ -79,7 +79,7 @@ function listenSubmitForm() {
       STORE.user = user;
       const boards = await getBoards();
       STORE.boards = boards;
-      console.log(STORE.user);
+      // console.log(STORE.user);
       DOMHandler.load(HomePage);
 
     } catch (error) {

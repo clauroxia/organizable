@@ -6,6 +6,7 @@ import DOMHandler from "../dom-handler.js";
 import SignUpPage from "./signup-page.js";
 import { getBoards } from "../services/boards-service.js";
 
+
 function render() {
   const { loginError } = LoginPage.state;
   return `<body>
@@ -53,15 +54,13 @@ function listenSubmitForm() {
         password: password.value
       };
 
-      const user = await login(credentials);
-      STORE.user = user;
-      const boards = await getBoards();
-      STORE.boards = boards;
+      STORE.user = await login(credentials);
+      STORE.boards = await getBoards();
       // console.log(STORE.user);
       // console.log(STORE.boards);
       DOMHandler.load(HomePage);
     } catch(error) {
-      LoginPage.state.loginError = error.message;
+      console.log(LoginPage.state.loginError);
       DOMHandler.reload();
     }
   });
@@ -74,7 +73,7 @@ function listenSignUp() {
     try {
       DOMHandler.load(SignUpPage);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   });
 }
