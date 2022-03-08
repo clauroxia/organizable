@@ -57,7 +57,7 @@ function listenSubmitForm() {
       STORE.user = await login(credentials);
       STORE.boards = await getBoards();
       // console.log(STORE.user);
-      // console.log(STORE.boards);
+      console.log(STORE.boards);
       DOMHandler.load(HomePage);
     } catch(error) {
       console.log(LoginPage.state.loginError);

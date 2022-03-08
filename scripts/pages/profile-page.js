@@ -7,13 +7,14 @@ import STORE from "../store.js";
 import { updateUser, deleteUser } from "../services/users-service.js";
 import { getBoards } from "../services/boards-service.js";
 import { boardPattern } from "./home-page.js";
+import { logout } from "../services/session-service.js";
 
 
 function render() {
   const user = STORE.user;
   return `<body>
   <section class="container-xl flex">
-    ${boardPattern()}
+    ${boardPattern("profile")}
     <div class="container-xl__boards">
       <div class="section section__close-profile"> 
         <div class="section-sm">
@@ -115,6 +116,19 @@ function listenCloseBoards() {
   });
 }
 
+function listenLogout() {
+  const link = document.querySelector(".js-logout-link");
+  link.addEventListener("click", async (event) => {
+    event.preventDefault();
+    try {
+      await logout();
+      DOMHandler.load(LoginPage);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}
+
 const ProfilePage = {
   toString() {
     return render();
@@ -124,7 +138,8 @@ const ProfilePage = {
     listenUpdateForm(),
     listenDeleteAccount(),
     listenHome(),
-    listenCloseBoards();
+    listenCloseBoards(),
+    listenLogout();
   },
 };
 
