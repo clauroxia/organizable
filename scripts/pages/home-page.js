@@ -45,17 +45,17 @@ export function boardPattern(namePage) {
 }
 
 function navbar(namePage, nameLabel, nameLink, urlIcon) {
+  let link = "";
   if (namePage == nameLink) {
-    return `<li class="navbar__element navbar__element-active gap-1 js-${nameLink}-link">
-              <img src=${urlIcon} class="board-size">
-              <p class="content-md"><a href="#">${nameLabel}</a></p>
-            </li>`
+    link = `class="navbar__element navbar__element-active gap-1 js-${nameLink}-link"`;
   } else {
-    return `<li class="navbar__element gap-1 js-${nameLink}-link">
-              <img src=${urlIcon} class="board-size">
-              <p class="content-md"><a href="#">${nameLabel}</a></p>
-            </li>`
+    link = `class="navbar__element gap-1 js-${nameLink}-link"`;
   }
+
+  return `<li ${link}>
+            <img src=${urlIcon} class="board-size">
+            <p class="content-md"><a href="#">${nameLabel}</a></p>
+          </li>`
 }
   
 function indexAllBoards(boards) {
@@ -63,10 +63,10 @@ function indexAllBoards(boards) {
   let indexBoards = "";
   for(let board of boards){
     if (board.starred) {
-      indexStarredBoards += renderBoards(board.name, "/icons/starredboard.svg");
+      indexStarredBoards += renderBoards(board.name, "true", "/icons/starredboard.svg");
     }
     if (!board.starred && !board.closed) {
-      indexBoards += renderBoards(board.name, "/icons/unstarredboard.svg");
+      indexBoards += renderBoards(board.name,"false", "/icons/unstarredboard.svg");
     }
   }
   indexBoards += `<div class="label-name__new">
@@ -87,12 +87,12 @@ function indexAllBoards(boards) {
           </div>` 
 }
 
-function renderBoards(nameBoard, urlIcon) {
+function renderBoards(nameBoard, dataFavorite, urlIcon) {
   return `<div class="label-name">
             <p class="content-lg">${nameBoard}</p>
             <div class="container-icons">
-              <div class="icon"><a><img src="/icons/trash.svg" class="trash-size js-trash"></a></div>
-              <div class="icon"><a><img src=${urlIcon} class="star-size"></a></div>
+              <div class="icon"><a><img src="/icons/trash.svg" class="trash-size"></a></div>
+              <div class="icon"><a><img data-favorite=${dataFavorite} src=${urlIcon} class="star-size"></a></div>
             </div>
           </div>
           `;
@@ -127,11 +127,16 @@ function listenLogout() {
   });
 }
 
-function listenRemoveBoard() {
-  const removeBoard = document.querySelector(".js-trash");
-  removeBoard.addEventListener("click", async (event) => {
+function listenAddCloseBoards() {
+  const addCloseBoards = document.querySelector(".js-trash");
+  addCloseBoards.addEventListener("click", async (event) => {
     event.preventDefault();
-    DOMHandler.reload();
+    try {
+      DOMHandler.load(CloseBoardsPage);
+    } catch (error) {
+      console.log(error);
+    }
+    // DOMHandler.load(CloseBoardsPage);
   });
 
 }
@@ -145,7 +150,7 @@ const HomePage = {
     listenLogout(),
     listenCloseBoards(),
     listenProfile(),
-    listenRemoveBoard();
+    listenAddCloseBoards();
   },
 };
 

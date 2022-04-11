@@ -78,7 +78,6 @@ function listenSignUp() {
   });
 }
 
-
 const LoginPage = {
   toString() {
     return render();
